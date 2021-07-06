@@ -1,0 +1,33 @@
+@import "variables";
+@import "mixins";
+
+.Dashboard {
+  background-color: aqua;
+}
+
+.delete-enter {
+  opacity: 0.01;
+}
+
+.delete-enter.delete-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.delete-leave {
+  opacity: 1;
+}
+
+.delete-leave.delete-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.delete-appear {
+  opacity: 0.01;
+}
+
+.delete-appear.delete-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}

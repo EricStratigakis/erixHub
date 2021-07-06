@@ -1,7 +1,6 @@
-import React from "react";
 import Link from "next/link";
 
-import styles from "../styles/Layout.module.scss";
+import styles from "./style.module.scss";
 import { useUser } from "@auth0/nextjs-auth0";
 
 const NavBar = () => {
@@ -11,6 +10,8 @@ const NavBar = () => {
     <div className={styles.NavBar}>
       <Link href="/">Home</Link>
       <Link href="/products">Products</Link>
+      <Link href="/dashboard">Dashboard</Link>
+
       <div className={styles.RightNav}>
         {user ? (
           <>
