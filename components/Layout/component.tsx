@@ -11,6 +11,7 @@ const NavBar = () => {
       <Link href="/">Home</Link>
       <Link href="/products">Products</Link>
       <Link href="/dashboard">Dashboard</Link>
+      <Link href="/fit">Fit</Link>
 
       <div className={styles.RightNav}>
         {user ? (
