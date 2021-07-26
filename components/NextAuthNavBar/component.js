@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
+import Link from "next/link";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -20,53 +24,70 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavBar = () => {
+const MyTextLink = ({ text, route }) => {
+  return (
+    <Link href={route}>
+      <Button color="inherit">{text}</Button>
+    </Link>
+  );
+};
+
+const NavBarLinks = () => {
   const { user, error, isLoading } = useUser();
 
   return (
-    <div className={styles.NavBar}>
-      <Link href="/">Home</Link>
-      <Link href="/products">Products</Link>
-      <Link href="/dashboard">Dashboard</Link>
-      <Link href="/fit">Fit</Link>
-
-      <div className={styles.RightNav}>
-        {user ? (
-          <>
-            <Link href="/api/auth/logout">Logout</Link>
-            <Link href="/profile">Profile</Link>
-          </>
-        ) : (
-          <Link href="/api/auth/login">Login</Link>
-        )}
-      </div>
-    </div>
+    <>
+      <MyTextLink text="Home" route="/" />
+      <MyTextLink text="Fit" route="/fit" />
+      <MyTextLink text="Dashboard" route="/dashboard" />
+      <MyTextLink text="Products" route="/products" />
+      <MyTextLink text="test" route="/test" />
+      {user ? (
+        <>
+          <MyTextLink text="Logout" route="/api/auth/logout" />
+          <MyTextLink text="Profile" route="/profile" />
+        </>
+      ) : (
+        <MyTextLink text="Login" route="/api/auth/login" />
+      )}
+    </>
   );
 };
 
 const NextAuthNavBar = () => {
-  const { user, error, isLoading } = useUser();
   const classes = useStyles();
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton
+          onClick={handleDrawerToggle}
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" className={classes.title}>
+          Welcome to ErixHub
+        </Typography>
+        <SwipeableDrawer
+          anchor={"left"}
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          onOpen={handleDrawerToggle}
+        >
+          <NavBarLinks />
+        </SwipeableDrawer>
+      </Toolbar>
+    </AppBar>
   );
 };
 

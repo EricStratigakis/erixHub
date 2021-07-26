@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import NavBar from "../NextAuthNavBar/component";
 
 const Footer = () => {
