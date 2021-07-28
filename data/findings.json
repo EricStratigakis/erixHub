@@ -17,7 +17,7 @@
     "finding": "this is the title"
   },
   {
-    "contentid": 123,
+    "contentid": 124,
     "lfiveManagerName": "Tom Segura",
     "lfiveManagerEmail": "tom@work.com",
     "issueOwnerName": "Joe Rogan",
@@ -25,7 +25,7 @@
     "findingType": "Software",
     "findingSubType": "Database",
     "riskTreatmentType": "Acceptance",
-    "stageStatus": "Stage 02 : Review",
+    "stageStatus": "Stage 02 - Review Record",
     "inherentRiskLevel": "High",
     "busUnit": "IT",
     "orgUnit": "Archer",
@@ -42,7 +42,7 @@
     "findingType": "Software",
     "findingSubType": "Database",
     "riskTreatmentType": "Acceptance",
-    "stageStatus": "Stage 03 : Accept",
+    "stageStatus": "Stage 03 - Accept Record",
     "inherentRiskLevel": "Med",
     "busUnit": "IT",
     "orgUnit": "Archer",

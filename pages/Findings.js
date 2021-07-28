@@ -1,51 +1,25 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 
-import { createStyles, makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import dynamic from "next/dynamic";
+import FindingsStageStatusPieChart from "../components/Findings/FindingsStageStatusPieChart";
+import FindingsGrid from "../components/Findings/FindingsGrid";
+import FindingsReportController from "../components/Findings/FindingsReportController";
+import Modal from "../components/Modal/component";
+import findingsData from "../data/findings.json";
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    formControl: { margin: theme.spacing(1), minWidth: 180 },
-  })
-);
+export const FindingsDataContext = createContext();
 
 const Findings = () => {
-  const classes = useStyles();
-  const [mainData, setMainData] = useState([]);
+  const mainData = findingsData;
   const [data, setData] = useState(mainData);
-
-  const filterFindingsByStageStaus = (event) => {
-    const ss = event.target.value;
-
-    if (ss === "None" || ss === "") {
-      setData(mainData);
-    } else {
-      setData(mainData.filter((item) => item["Stage Status"] === ss));
-    }
-  };
-
   return (
-    <>
-      <FormControl variant="outlined" className={classes.formControl}>
-        <Select
-          label="Stage Staus Filter"
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          width={"300 px"}
-          onChange={(e) => filterFindingsByStageStaus(e)}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={"Stage 01 - Submit Record"}>
-            Stage 01 - Submit Record
-          </MenuItem>
-        </Select>
-      </FormControl>
-    </>
+    <FindingsDataContext.Provider value={{ data, mainData }}>
+      <Modal title="Report Options">
+        <FindingsReportController />
+      </Modal>
+      <FindingsStageStatusPieChart />
+      <FindingsGrid />
+    </FindingsDataContext.Provider>
   );
 };
 

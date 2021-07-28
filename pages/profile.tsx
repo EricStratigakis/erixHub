@@ -1,5 +1,6 @@
 // Protecting a Client-Side Rendered (CSR) Page
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Image from "next/image";
 
 const Profile = () => {
   const { user, error, isLoading } = useUser();
@@ -10,7 +11,7 @@ const Profile = () => {
   return (
     user && (
       <div>
-        <img src={user.picture} alt={user.name} />
+        {/* <Image src={user.picture} alt={user.name} width={300} height={300} /> */}
         <h2>{user.name}</h2>
         <p>{user.email}</p>
       </div>
