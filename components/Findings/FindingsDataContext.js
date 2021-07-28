@@ -1,5 +1,59 @@
 import { useState, createContext, useContext } from "react";
-import findingsData from "../../data/findings.json"; // reaplce with API call in PROD
+// import findingsData from "../../data/findings.json"; // reaplce with API call in PROD
+
+const findingsData = [
+  {
+    contentid: 123,
+    lfiveManagerName: "Tom Segura",
+    lfiveManagerEmail: "tom@work.com",
+    issueOwnerName: "Joe Rogan",
+    issueOwnerEmail: "joe@kettlebell.ca",
+    findingType: "Software",
+    findingSubType: "Database",
+    riskTreatmentType: "Acceptance",
+    stageStatus: "Stage 01 - Submit Record",
+    inherentRiskLevel: "Low",
+    busUnit: "IT",
+    orgUnit: "Archer",
+    dueDate: "tomorrow",
+    closedDate: "today",
+    finding: "this is the title",
+  },
+  {
+    contentid: 124,
+    lfiveManagerName: "Tom Segura",
+    lfiveManagerEmail: "tom@work.com",
+    issueOwnerName: "Joe Rogan",
+    issueOwnerEmail: "joe@kettlebell.ca",
+    findingType: "Software",
+    findingSubType: "Database",
+    riskTreatmentType: "Acceptance",
+    stageStatus: "Stage 02 - Review Record",
+    inherentRiskLevel: "High",
+    busUnit: "IT",
+    orgUnit: "Archer",
+    dueDate: "tomorrow",
+    closedDate: "today",
+    finding: "this is the title",
+  },
+  {
+    contentid: 125,
+    lfiveManagerName: "Tom Segura",
+    lfiveManagerEmail: "tom@work.com",
+    issueOwnerName: "Joe Rogan",
+    issueOwnerEmail: "joe@kettlebell.ca",
+    findingType: "Software",
+    findingSubType: "Database",
+    riskTreatmentType: "Acceptance",
+    stageStatus: "Stage 03 - Accept Record",
+    inherentRiskLevel: "Med",
+    busUnit: "IT",
+    orgUnit: "Archer",
+    dueDate: "tomorrow",
+    closedDate: "today",
+    finding: "this is the title",
+  },
+];
 
 export const FindingsDataContext = createContext();
 

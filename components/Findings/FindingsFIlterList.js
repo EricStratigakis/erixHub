@@ -10,16 +10,16 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const FindingsFilterList = ({ filterParam, options, setData, mainData }) => {
+const FindingsFilterList = ({ filterParam, options }) => {
   const classes = useStyles();
 
   const filterFindingsBy = (filterParam, event) => {
-    const x = event.target.value;
-    if (x === "None" || x === "") {
-      setData(mainData);
-    } else {
-      setData(mainData.filter((item) => item[filterParam] === x));
-    }
+    // const x = event.target.value;
+    // if (x === "None" || x === "") {
+    //   setData(mainData);
+    // } else {
+    //   setData(mainData.filter((item) => item[filterParam] === x));
+    // }
   };
   return (
     <FormControl variant="outlined" className={classes.formControl}>
