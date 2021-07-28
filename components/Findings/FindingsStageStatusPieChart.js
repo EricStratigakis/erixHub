@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { FindingsDataContext } from "../../pages/Findings";
+import { useFindingsData } from "./FindingsDataContext";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -29,7 +28,7 @@ const getPieChartDataFromResponse = (data) => {
 };
 
 const FindingsStageStatusPieChart = () => {
-  const { data } = useContext(FindingsDataContext);
+  const { data } = useFindingsData();
   const { labels, series } = getPieChartDataFromResponse(data);
   const options = {
     labels,

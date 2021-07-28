@@ -1,11 +1,11 @@
-import { useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import FindingCard from "./FindingCard";
 import removeTags from "../../utils/removHTML";
-import { FindingsDataContext } from "../../pages/Findings";
+import { useFindingsData } from "./FindingsDataContext";
 
 const FindingsGrid = () => {
-  const { data } = useContext(FindingsDataContext);
+  const { data } = useFindingsData();
+
   return (
     <Grid container justifyContent={"center"} spacing={3}>
       {data.map((item, index) => {
