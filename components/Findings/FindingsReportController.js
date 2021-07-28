@@ -2,7 +2,7 @@ import FindingsFilterList from "./FindingsFilterList";
 
 const FindingsReportController = () => {
   return (
-    <>
+    <div>
       <FindingsFilterList
         filterParam="Stage Stauts"
         options={[
@@ -11,7 +11,7 @@ const FindingsReportController = () => {
           "Stage 03 - Accept Record",
         ]}
       />
-    </>
+    </div>
   );
 };
 
