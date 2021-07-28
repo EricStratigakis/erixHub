@@ -5,10 +5,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-import dynamic from "next/dynamic";
 import FindingTimeLineChart from "./FindingTimeLineChart";
 import Modal from "../Modal/component";
-import MoreDetails from "./MoreDetails.js";
 
 const useStyles = makeStyles({
   root: {
