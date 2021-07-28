@@ -6,7 +6,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    formControl: { margin: theme.spacing(1), minWidth: 180 },
+    formControl: { margin: theme.spacing(1), minWidth: 182 },
   })
 );
 
