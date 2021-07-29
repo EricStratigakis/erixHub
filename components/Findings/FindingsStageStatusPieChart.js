@@ -1,6 +1,7 @@
 import { useFindingsData } from "./FindingsDataContext";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import Container from "@material-ui/core/Container";
 
 const getPieChartDataFromResponse = (data) => {
   var stageStatus = {};
@@ -33,7 +34,11 @@ const FindingsStageStatusPieChart = () => {
   const options = {
     labels,
   };
-  return <Chart options={options} series={series} type="pie" width="420px" />;
+  return (
+    <Container fixed maxWidth="sm">
+      <Chart options={options} series={series} type="pie" width="100%" />
+    </Container>
+  );
 };
 
 export default FindingsStageStatusPieChart;
