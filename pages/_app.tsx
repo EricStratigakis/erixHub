@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import Head from "next/head";
 import { AppProps } from "next/app";

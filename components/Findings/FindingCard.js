@@ -66,14 +66,10 @@ const FindingCard = ({
       return;
     }
     if (!findingSubType) {
-      return (
-        <Typography className={classes.pos} component="textSecondary">
-          {findingType}
-        </Typography>
-      );
+      return <Typography className={classes.pos}>{findingType}</Typography>;
     } else {
       return (
-        <Typography className={classes.pos} component="textSecondary">
+        <Typography className={classes.pos}>
           {findingType} - {findingSubType}
         </Typography>
       );
