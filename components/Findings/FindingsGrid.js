@@ -8,10 +8,7 @@ const FindingsGrid = () => {
   const { data } = useFindingsData();
   const pageSize = 5;
 
-  const { elements, hasMore, lastElementRef } = useInfiniteScroll(
-    data,
-    pageSize
-  );
+  const { elements, lastElementRef } = useInfiniteScroll(data, pageSize);
 
   return (
     <Grid container justifyContent="center" spacing={3}>

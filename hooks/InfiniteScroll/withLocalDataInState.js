@@ -1,4 +1,3 @@
-import { LocalConvenienceStoreOutlined } from "@material-ui/icons";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const useInfiniteScroll = (data, pageSize) => {

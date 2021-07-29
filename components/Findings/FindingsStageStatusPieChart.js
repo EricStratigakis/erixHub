@@ -33,7 +33,7 @@ const FindingsStageStatusPieChart = () => {
   const options = {
     labels,
   };
-  return <Chart options={options} series={series} type="pie" width="500px" />;
+  return <Chart options={options} series={series} type="pie" width="420px" />;
 };
 
 export default FindingsStageStatusPieChart;
