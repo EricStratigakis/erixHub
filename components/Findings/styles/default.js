@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => {
-  console.log(theme);
   const overDue = true;
   return {
     findingCardRoot: {

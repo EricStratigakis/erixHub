@@ -59,6 +59,15 @@ const FindingCardAccordian = ({ item }) => {
         )}
       />
       <FindingCardAccordianSection
+        Summary={() => <FindingAccordianHeaderText text="Issue Owner" />}
+        Details={() => (
+          <ContactNameAndEmail
+            name={item["Issue Owner Name Text"]}
+            email={item["Issue Owner Email Text"]}
+          />
+        )}
+      />
+      <FindingCardAccordianSection
         Summary={() => <FindingAccordianHeaderText text="L5 Manager" />}
         Details={() => (
           <ContactNameAndEmail
@@ -109,7 +118,10 @@ const FindingCard = ({ item }) => {
   return (
     <Grid item xs={12}>
       <Card raised className={classes.findingCardRoot}>
-        <FindingsChipList item={item} />
+        <FindingsChipList
+          dueDate={item["Due Date"]}
+          riskLevel={item["Inherent Risk Level Text"]}
+        />
         <CardHeader title={item["Content ID"]} />
         <FindingCardAccordian item={item} />
         <CardActions>
