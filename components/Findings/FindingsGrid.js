@@ -13,7 +13,7 @@ const FindingsGrid = () => {
     <Grid container justifyContent="center" spacing={3}>
       {elements.map((item, index) => {
         return (
-          <Container>
+          <Container key={index}>
             <div
               style={{ padding: "5px" }}
               ref={elements.length === index + 1 ? lastElementRef : null}
