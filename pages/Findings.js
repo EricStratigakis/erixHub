@@ -1,4 +1,4 @@
-import FindingsStageStatusPieChart from "../components/Findings/FindingsStageStatusPieChart";
+import FindingsPieChart from "../components/Findings/FindingsPieChart";
 import FindingsGrid from "../components/Findings/FindingsGrid";
 import FindingsReportController from "../components/Findings/FindingsReportController";
 import { FindingsDataContextProvider } from "../components/Findings/FindingsDataContext";
@@ -10,7 +10,9 @@ const Findings = () => {
       <Modal title="Report Options">
         <FindingsReportController />
       </Modal>
-      <FindingsStageStatusPieChart />
+      <FindingsPieChart filterParam="Stage Status Text" />
+      <FindingsPieChart filterParam="Inherent Risk Level Text" />
+
       <FindingsGrid />
     </FindingsDataContextProvider>
   );

@@ -2,13 +2,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    formControl: { margin: theme.spacing(1), minWidth: 182 },
-  })
-);
+import useStyles from "./styles/default";
 
 const FindingsFilterList = ({ filterParam, options }) => {
   const classes = useStyles();
@@ -24,10 +19,7 @@ const FindingsFilterList = ({ filterParam, options }) => {
   return (
     <FormControl variant="outlined" className={classes.formControl}>
       <InputLabel>{filterParam} Filter</InputLabel>
-      <Select
-        width={"300 px"}
-        onChange={(e) => filterFindingsBy(filterParam, e)}
-      >
+      <Select width="300px" onChange={(e) => filterFindingsBy(filterParam, e)}>
         <MenuItem value="">
           <em>None</em>
         </MenuItem>

@@ -3,21 +3,21 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import Container from "@material-ui/core/Container";
 
-const getPieChartDataFromResponse = (data) => {
-  var stageStatus = {};
+const getPieChartDataFromResponse = (data, filterParam) => {
+  var tempDict = {};
   data.forEach((item) => {
-    let ss = item["stageStatus"];
-    if (stageStatus[ss] === undefined) {
-      stageStatus[ss] = 1;
+    let x = item[filterParam];
+    if (tempDict[x] === undefined) {
+      tempDict[x] = 1;
     } else {
-      stageStatus[ss] += 1;
+      tempDict[x] += 1;
     }
   });
 
   let labels = [];
   let series = [];
 
-  for (const [key, value] of Object.entries(stageStatus)) {
+  for (const [key, value] of Object.entries(tempDict)) {
     labels.push(key);
     series.push(value);
   }
@@ -28,9 +28,9 @@ const getPieChartDataFromResponse = (data) => {
   };
 };
 
-const FindingsStageStatusPieChart = () => {
+const FindingsPieChart = ({ filterParam }) => {
   const { data } = useFindingsData();
-  const { labels, series } = getPieChartDataFromResponse(data);
+  const { labels, series } = getPieChartDataFromResponse(data, filterParam);
   const options = {
     labels,
   };
@@ -41,4 +41,4 @@ const FindingsStageStatusPieChart = () => {
   );
 };
 
-export default FindingsStageStatusPieChart;
+export default FindingsPieChart;

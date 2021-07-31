@@ -1,118 +1,124 @@
-import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import CardHeader from "@material-ui/core/CardHeader";
+import Button from "@material-ui/core/Button";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+import useStyles from "./styles/default";
 import FindingTimeLineChart from "./FindingTimeLineChart";
+import FindingsChipList from "./FindingsChipList";
 import Modal from "../Modal/component";
+import removeHTML from "../../utils/removeHTML";
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-    padding: "2rem",
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
-const FindingCard = ({
-  contentId,
-  finding,
-  lFiveManagerName,
-  lFiveManagerEmail,
-  issueOwnerName,
-  issueOwnerEmail,
-  findingType,
-  findingSubType,
-  riskTreatmentType,
-  stageStatus,
-  inHerentRiskLevel,
-  busUnit,
-  orgUnit,
-  dueDate,
-  closedDate,
-  completionDate,
-  lastUpdatedDate,
-}) => {
-  const classes = useStyles();
-  const contactNameAndEmail = (title, name, email) => {
-    if (!name && !email) return;
-    if (!name)
-      return (
-        <>
-          {title}: {email}
-        </>
-      );
-    if (!email)
-      return (
-        <>
-          {title}: {name} {email}
-        </>
-      );
-  };
-  const findingTypeAndSubType = (findingType, findingSubType) => {
-    if (!findingType && !findingSubType) {
-      return;
-    }
-    if (!findingSubType) {
-      return <Typography className={classes.pos}>{findingType}</Typography>;
-    } else {
-      return (
-        <Typography className={classes.pos}>
-          {findingType} - {findingSubType}
-        </Typography>
-      );
-    }
-  };
-  const percentCompleted = 70;
-  const waitingOnRole = "Approver 1";
-  const waitingOnName = "Eric";
-  const waitingOnAction = "to Approve or reject";
+const FindingCardAccordianSection = ({ Summary, Details }) => {
   return (
-    <Grid item sm={12} md={6}>
-      <Card raised className={classes.root}>
-        <CardContent>
-          <Typography className={classes.title}>
-            {contentId} {stageStatus} {riskTreatmentType} {inHerentRiskLevel}
-          </Typography>
-          <Typography>{finding}</Typography>
-          {findingTypeAndSubType(findingType, findingSubType)}
-          <Typography className={classes.pos}>
-            {orgUnit} - {busUnit}
-          </Typography>
-          <Typography>
-            {contactNameAndEmail(
-              "Issue Owner",
-              issueOwnerName,
-              issueOwnerEmail
-            )}
-            {contactNameAndEmail(
-              "L5 Manager",
-              lFiveManagerName,
-              lFiveManagerEmail
-            )}
-          </Typography>
-        </CardContent>
-        <Typography className={classes.pos}>
-          Finding {percentCompleted}% Completed
-          <br />
-          Waiting on the {waitingOnRole} ({waitingOnName}) to {waitingOnAction}
-        </Typography>
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Summary />
+      </AccordionSummary>
+      <AccordionDetails>
+        <Details />
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+const FindingCardAccordian = ({ item }) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <FindingCardAccordianSection
+        Summary={() => <FindingAccordianHeaderText text="Finding Summary" />}
+        Details={() => <FindingAccordianHeaderText text={item["Finding"]} />}
+      />
+      <FindingCardAccordianSection
+        Summary={() => <FindingAccordianHeaderText text={item["Finding"]} />}
+        Details={() => (
+          <FindingTypeAndSubType
+            findingType={item["Finding Type Text"]}
+            findingSubType={item["Finding Sub Type Text"]}
+          />
+        )}
+      />
+      <FindingCardAccordianSection
+        Summary={() => <FindingAccordianHeaderText text="Hierarchy" />}
+        Details={() => (
+          <FindingHierarchy
+            orgUnit={item["Organization Unit"]}
+            busUnit={item["Business Unit"]}
+          />
+        )}
+      />
+      <FindingCardAccordianSection
+        Summary={() => <FindingAccordianHeaderText text="L5 Manager" />}
+        Details={() => (
+          <ContactNameAndEmail
+            name={item["L5 Manager Name Text"]}
+            email={item["L5 Manager Email Text"]}
+          />
+        )}
+      />
+    </div>
+  );
+};
+
+const FindingTypeAndSubType = ({ findingType, findingSubType }) => {
+  return (
+    <div>
+      {findingType && <Typography>Finding Type: {findingType}</Typography>}
+      {findingSubType && (
+        <Typography>Finding Sub Type: {findingSubType}</Typography>
+      )}
+    </div>
+  );
+};
+
+const FindingHierarchy = ({ busUnit, orgUnit }) => {
+  return (
+    <div>
+      {orgUnit && <Typography>Organization Unit: {orgUnit}</Typography>}
+      {busUnit && <Typography>Business Unit: {busUnit}</Typography>}
+    </div>
+  );
+};
+
+const ContactNameAndEmail = ({ name, email }) => {
+  return (
+    <div>
+      {name && <Typography>Name: {name}</Typography>}
+      {email && <Typography>Email: {email}</Typography>}
+    </div>
+  );
+};
+
+const FindingAccordianHeaderText = ({ text }) => {
+  return <Typography>{removeHTML(text)}</Typography>;
+};
+
+const FindingCard = ({ item }) => {
+  const classes = useStyles();
+  return (
+    <Grid item xs={12}>
+      <Card raised className={classes.findingCardRoot}>
+        <FindingsChipList item={item} />
+        <CardHeader title={item["Content ID"]} />
+        <FindingCardAccordian item={item} />
         <CardActions>
-          <Modal title={"More Detials"}>
+          <Modal title="More Detials">
             <FindingTimeLineChart />
           </Modal>
+          <Button variant="outlined" color="primary">
+            To Archer
+          </Button>
         </CardActions>
       </Card>
     </Grid>

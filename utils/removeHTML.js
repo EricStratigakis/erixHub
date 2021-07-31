@@ -1,7 +1,7 @@
-const removeTags = (str) => {
+const removeHTML = (str) => {
   if (str === null || str === "") return false;
   else str = str.toString();
   return str.replace(/(<([^>]+)>)/gi, "");
 };
 
-export default removeTags;
+export default removeHTML;
