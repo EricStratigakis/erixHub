@@ -3,36 +3,23 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import Container from "@material-ui/core/Container";
 
-const getPieChartDataFromResponse = (data, filterParam) => {
-  var tempDict = {};
+const getPieChartDataFromResponse = (data, filterParam, labels) => {
+  var series = new Array(labels.length).fill(0);
   data.forEach((item) => {
-    let x = item[filterParam];
-    if (tempDict[x] === undefined) {
-      tempDict[x] = 1;
-    } else {
-      tempDict[x] += 1;
-    }
+    series[labels.indexOf(item[filterParam])] += 1;
   });
-
-  let labels = [];
-  let series = [];
-
-  for (const [key, value] of Object.entries(tempDict)) {
-    labels.push(key);
-    series.push(value);
-  }
-
-  return {
-    labels,
-    series,
-  };
+  return series;
 };
 
-const FindingsPieChart = ({ filterParam }) => {
+const FindingsPieChart = ({ filterParam, labels, colors }) => {
   const { data } = useFindingsData();
-  const { labels, series } = getPieChartDataFromResponse(data, filterParam);
+  const series = getPieChartDataFromResponse(data, filterParam, labels);
   const options = {
     labels,
+    colors,
+    legend: {
+      position: "top",
+    },
   };
   return (
     <Container fixed maxWidth="sm">

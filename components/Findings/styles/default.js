@@ -1,13 +1,12 @@
 import { makeStyles } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => {
-  const overDue = true;
   return {
     findingCardRoot: {
       padding: theme.spacing(3),
-      border: "1px solid",
-      borderColor: overDue ? red[500] : null,
+    },
+    containerRoot: {
+      padding: theme.spacing(3),
     },
     bullet: {
       display: "inline-block",

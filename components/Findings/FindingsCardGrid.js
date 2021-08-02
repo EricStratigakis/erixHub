@@ -3,19 +3,19 @@ import FindingCard from "./FindingCard";
 import { useFindingsData } from "./FindingsDataContext";
 import useInfiniteScroll from "../../hooks/InfiniteScroll/withLocalDataInState";
 import Container from "@material-ui/core/Container";
+import useStyles from "./styles/default";
 
-const FindingsGrid = () => {
+const FindingsCardGrid = () => {
+  const classes = useStyles();
   const { data } = useFindingsData();
   const pageSize = 5;
   const { elements, lastElementRef } = useInfiniteScroll(data, pageSize);
-
   return (
     <Grid container justifyContent="center" spacing={3}>
       {elements.map((item, index) => {
         return (
-          <Container key={index}>
+          <Container key={index} className={classes.containerRoot}>
             <div
-              style={{ padding: "5px" }}
               ref={elements.length === index + 1 ? lastElementRef : null}
               key={index}
             >
@@ -28,4 +28,4 @@ const FindingsGrid = () => {
   );
 };
 
-export default FindingsGrid;
+export default FindingsCardGrid;
