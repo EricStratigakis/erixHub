@@ -1,30 +1,33 @@
+import { useState } from "react";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import CardHeader from "@material-ui/core/CardHeader";
 import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardActions from "@material-ui/core/CardActions";
 import FindingCardAccordianSection from "./FindingCardAccordianSection";
 import FindingsPieChart from "./FindingsPieChart";
 import { red, green, blue, yellow, orange } from "@material-ui/core/colors";
-
 import useStyles from "./styles/default";
+import { useFindingsData } from "./FindingsDataContext";
 
 const FindingAccordianHeaderText = ({ text }) => {
   return <Typography>{text}</Typography>;
 };
 
-const FindingReportOptions = () => {
+const FindingsMetaData = () => {
   const classes = useStyles();
+  const { runFilters } = useFindingsData();
+  const handleApply = () => {
+    runFilters();
+  };
+
   return (
     <Container className={classes.containerRoot}>
       <Card raised className={classes.findingCardRoot}>
         <CardHeader title="Findings Report Options" />
         <FindingCardAccordianSection
-          Summary={() => (
-            <FindingAccordianHeaderText text="Stage Status Pie Chart" />
-          )}
+          Summary={() => <FindingAccordianHeaderText text="Stage Status" />}
           Details={() => (
             <FindingsPieChart
               filterParam="Stage Status Text"
@@ -39,7 +42,7 @@ const FindingReportOptions = () => {
         />
         <FindingCardAccordianSection
           Summary={() => (
-            <FindingAccordianHeaderText text="Inherent Risk Level Pie Chart" />
+            <FindingAccordianHeaderText text="Inherent Risk Level" />
           )}
           Details={() => (
             <FindingsPieChart
@@ -49,9 +52,14 @@ const FindingReportOptions = () => {
             />
           )}
         />
+        <CardActions>
+          <Button onClick={handleApply} variant="outlined" color="primary">
+            Apply
+          </Button>
+        </CardActions>
       </Card>
     </Container>
   );
 };
 
-export default FindingReportOptions;
+export default FindingsMetaData;

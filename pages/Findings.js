@@ -1,13 +1,11 @@
-import FindingsPieChart from "../components/Findings/FindingsPieChart";
 import FindingsCardGrid from "../components/Findings/FindingsCardGrid";
-import FindingReportOptions from "../components/Findings/FindingReportOptions";
+import FindingsMetaData from "../components/Findings/FindingsMetaData";
 import { FindingsDataContextProvider } from "../components/Findings/FindingsDataContext";
 
 const Findings = () => {
   return (
     <FindingsDataContextProvider>
-      <FindingReportOptions />
-
+      <FindingsMetaData />
       <FindingsCardGrid />
     </FindingsDataContextProvider>
   );

@@ -35,6 +35,12 @@ const useStyles = makeStyles((theme) => {
       fontSize: theme.typography.pxToRem(15),
       fontWeight: theme.typography.fontWeightRegular,
     },
+    findingsCheckBoxesRoot: {
+      display: "flex",
+    },
+    formControl: {
+      margin: theme.spacing(3),
+    },
   };
 });
 
