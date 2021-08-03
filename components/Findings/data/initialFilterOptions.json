@@ -1,0 +1,13 @@
+{
+  "Stage Status Text": {
+    "Stage 01 - Submit Record": true,
+    "Stage 02 - Review Record": true,
+    "Stage 03 - Accept Record": true
+  },
+  "Inherent Risk Level Text": {
+    "Low": true,
+    "Medium": true,
+    "High": true,
+    "Very Hight": true
+  }
+}

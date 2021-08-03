@@ -1,9 +1,7 @@
-import { useFindingsData } from "./FindingsDataContext";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import Container from "@material-ui/core/Container";
-
-import FindingsCheckBoxes from "./FindingsCheckBoxes";
+import CheckBoxes from "../../Fields/CheckBoxes";
 
 const getPieChartDataFromResponse = (data, filterParam, labels) => {
   var series = new Array(labels.length).fill(0);
@@ -13,8 +11,14 @@ const getPieChartDataFromResponse = (data, filterParam, labels) => {
   return series;
 };
 
-const FindingsPieChart = ({ filterParam, labels, colors }) => {
-  const { data } = useFindingsData();
+const FindingsPieChart = ({
+  filterParam,
+  labels,
+  colors,
+  data,
+  filterOptions,
+  setFilterOptions,
+}) => {
   const series = getPieChartDataFromResponse(data, filterParam, labels);
   const options = {
     labels,
@@ -43,10 +47,13 @@ const FindingsPieChart = ({ filterParam, labels, colors }) => {
   };
   return (
     <Container fixed maxWidth="sm">
-      <FindingsCheckBoxes
+      <CheckBoxes
         filterParam={filterParam}
+        series={series}
         colors={colors}
         options={labels}
+        filterOptions={filterOptions}
+        setFilterOptions={setFilterOptions}
       />
       <Chart options={options} series={series} type="pie" width="100%" />
     </Container>

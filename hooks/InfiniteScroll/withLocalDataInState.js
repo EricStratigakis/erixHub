@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const useInfiniteScroll = (data, pageSize) => {
+const useInfiniteScroll = ({ data, pageSize }) => {
   const [elements, setElements] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);

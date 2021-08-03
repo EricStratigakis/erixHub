@@ -5,10 +5,14 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 
-import { useFindingsData } from "./FindingsDataContext";
-
-const FindingsCheckBoxes = ({ filterParam, options, colors }) => {
-  const { filterOptions, setFilterOptions } = useFindingsData();
+const FindingsCheckBoxes = ({
+  filterParam,
+  options,
+  colors,
+  series,
+  filterOptions,
+  setFilterOptions,
+}) => {
   const [state, setState] = useState(filterOptions[filterParam]);
 
   const handleChange = (event) => {
@@ -37,11 +41,12 @@ const FindingsCheckBoxes = ({ filterParam, options, colors }) => {
                   style={{ color: colors[index] }}
                 />
               }
-              label={item}
+              label={`${item} (${series[index]})`}
             />
           );
         })}
       </FormGroup>
+      <FormHelperText>Tap Search for the changes to take effect</FormHelperText>
     </FormControl>
   );
 };

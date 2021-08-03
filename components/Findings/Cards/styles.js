@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => {
     formControl: { margin: theme.spacing(1), minWidth: 182 },
     chipList: {
       display: "flex",
-      justifyContent: "flex-end ",
+      justifyContent: "flex-end",
       flexWrap: "wrap",
       "& > *": {
         margin: theme.spacing(0.5),
@@ -48,5 +48,3 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
-
-export default useStyles;

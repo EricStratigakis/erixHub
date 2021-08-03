@@ -1,14 +1,27 @@
 import Chip from "@material-ui/core/Chip";
 import ScheduleSharpIcon from "@material-ui/icons/ScheduleSharp";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
-import useStyles from "./styles/default";
 import { red } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => {
+  return {
+    root: {
+      display: "flex",
+      justifyContent: "flex-end",
+      flexWrap: "wrap",
+      "& > *": {
+        margin: theme.spacing(0.5),
+      },
+    },
+  };
+});
 
 const FindingsChipList = ({ dueDate, riskLevel }) => {
   const classes = useStyles();
   const overDue = new Date(dueDate) < new Date();
   return (
-    <div className={classes.chipList}>
+    <div className={classes.root}>
       {overDue && (
         <Chip
           variant="outlined"
