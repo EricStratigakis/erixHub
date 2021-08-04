@@ -37,6 +37,7 @@ const NavBarLinks = () => {
     <>
       <MyTextLink text="Home" route="/" />
       <MyTextLink text="Fit" route="/fit" />
+      <MyTextLink text="Findings" route="/findings" />
       <MyTextLink text="Dashboard" route="/dashboard" />
       <MyTextLink text="Products" route="/products" />
       <MyTextLink text="test" route="/test" />

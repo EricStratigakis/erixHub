@@ -3,7 +3,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-const AccordianSection = ({ Summary, Details }) => {
+const AccordianSection = ({ MySummary, MyDetails }) => {
   return (
     <Accordion>
       <AccordionSummary
@@ -11,10 +11,10 @@ const AccordianSection = ({ Summary, Details }) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Summary />
+        <MySummary />
       </AccordionSummary>
       <AccordionDetails>
-        <Details />
+        <MyDetails />
       </AccordionDetails>
     </Accordion>
   );

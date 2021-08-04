@@ -5,7 +5,7 @@ import { AppProps } from "next/app";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../themes/exmaple";
-import Layout from "../components/Layout/component";
+import Layout from "../components/Layouts/website/component";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {

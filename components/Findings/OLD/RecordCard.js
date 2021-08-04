@@ -3,9 +3,8 @@ import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
 import Button from "@material-ui/core/Button";
-import FindingTimeLineChart from "../Charts/FindingTimeLineChart";
-import ChipList from "../ChipList/FindingsChipList";
-import Modal from "../../Modal/component";
+import TimeLineChart from "../../Charts/TimeLineChart";
+import Modal from "../../Modal/MyModal";
 import removeHTML from "../../../utils/removeHTML";
 import AccordianSection from "../../Accordians/AccordianSection";
 import { makeStyles } from "@material-ui/core";
@@ -57,10 +56,6 @@ const RecordCard = ({ record }) => {
   const classes = useStyles();
   return (
     <Card raised>
-      <ChipList
-        dueDate={record["Due Date"]}
-        riskLevel={record["Inherent Risk Level Text"]}
-      />
       <CardHeader title={record["Content ID"]} />
       <AccordianSection
         Summary={() => <FindingAccordianHeaderText text="Finding Summary" />}
@@ -104,7 +99,7 @@ const RecordCard = ({ record }) => {
       />
       <CardActions className={classes.cardActions}>
         <Modal title="More Detials">
-          <FindingTimeLineChart />
+          <TimeLineChart />
         </Modal>
         <Button variant="outlined" color="primary">
           To Archer

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import Container from "@material-ui/core/Container";
-import CheckBoxes from "../../Fields/CheckBoxes";
+import CheckBoxes from "../Fields/CheckBoxes";
 
 const getPieChartDataFromResponse = (data, filterParam, labels) => {
   var series = new Array(labels.length).fill(0);
@@ -11,7 +11,7 @@ const getPieChartDataFromResponse = (data, filterParam, labels) => {
   return series;
 };
 
-const FindingsPieChart = ({
+const PieChart = ({
   filterParam,
   labels,
   colors,
@@ -60,4 +60,4 @@ const FindingsPieChart = ({
   );
 };
 
-export default FindingsPieChart;
+export default PieChart;

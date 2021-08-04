@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActions from "@material-ui/core/CardActions";
 import AccordianSection from "../../Accordians/AccordianSection";
-import FindingsPieChart from "../Charts/FindingsPieChart";
+import PieChart from "../Charts/PieChart";
 import { red, green, blue, yellow, orange } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core";
 
@@ -50,7 +50,7 @@ const MetaCard = ({
       <AccordianSection
         Summary={() => <FindingAccordianHeaderText text="Stage Status" />}
         Details={() => (
-          <FindingsPieChart
+          <PieChart
             filterParam="Stage Status Text"
             labels={[
               "Stage 01 - Submit Record",
@@ -69,7 +69,7 @@ const MetaCard = ({
           <FindingAccordianHeaderText text="Inherent Risk Level" />
         )}
         Details={() => (
-          <FindingsPieChart
+          <PieChart
             filterParam="Inherent Risk Level Text"
             labels={["Low", "Medium", "High", "Very High"]}
             colors={[green[500], yellow[500], orange[500], red[500]]}

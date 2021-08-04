@@ -1,4 +1,4 @@
-import NavBar from "../NextAuthNavBar/component";
+import NavBar from "../../NextAuthNavBar/component";
 
 const Footer = () => {
   return <div>This is where the Footer goes</div>;

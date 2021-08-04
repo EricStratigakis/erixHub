@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import moment from "moment";
 
-const FindingTimeLineChart = () => {
+const TimeLineChart = () => {
   const series = [
     {
       data: [
@@ -94,4 +94,4 @@ const FindingTimeLineChart = () => {
   );
 };
 
-export default FindingTimeLineChart;
+export default TimeLineChart;
