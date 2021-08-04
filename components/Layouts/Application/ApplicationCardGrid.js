@@ -1,6 +1,6 @@
 import useInfiniteScroll from "../../../hooks/InfiniteScroll/withLocalDataInState";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core";
+import { useFindingsData } from "../../Findings/data/Context";
+import { makeStyles, Grid } from "@material-ui/core";
 import MyCard from "../../Cards/MyCard";
 import {
   FindingsRecordCardBody,
@@ -21,42 +21,18 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-const Temp = () => {
-  return <div>here</div>;
-};
-
-const ApplicationCardGrid = ({
-  title,
-  recordTitleString,
-  data,
-  setData,
-  filterOptions,
-  setFilterOptions,
-  mainData,
-}) => {
+const ApplicationCardGrid = ({ title, recordTitleString }) => {
   const classes = useStyles();
   const pageSize = 5;
+  const { data } = useFindingsData();
   const { elements, lastElementRef } = useInfiniteScroll({ data, pageSize });
-
   return (
-    <Grid container className={classes.root}>
+    <Grid container>
       <Grid item xs={12} className={classes.root}>
         <MyCard
           title={title}
-          MyBody={() => (
-            <FindingsMetaCardBody
-              data={data}
-              filterOptions={filterOptions}
-              setFilterOptions={setFilterOptions}
-            />
-          )}
-          MyActions={() => (
-            <FindingsMetaCardActions
-              filterOptions={filterOptions}
-              setData={setData}
-              mainData={mainData}
-            />
-          )}
+          MyBody={FindingsMetaCardBody}
+          MyActions={FindingsMetaCardActions}
         />
       </Grid>
       {elements.map((record, index) => {

@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import Container from "@material-ui/core/Container";
 import CheckBoxes from "../Fields/CheckBoxes";
+import { useFindingsData } from "../Findings/data/Context";
 
 const getPieChartDataFromResponse = (data, filterParam, labels) => {
   var series = new Array(labels.length).fill(0);
@@ -11,14 +12,8 @@ const getPieChartDataFromResponse = (data, filterParam, labels) => {
   return series;
 };
 
-const PieChart = ({
-  filterParam,
-  labels,
-  colors,
-  data,
-  filterOptions,
-  setFilterOptions,
-}) => {
+const PieChart = ({ filterParam, labels, colors }) => {
+  const { data, filterOptions, setFilterOptions } = useFindingsData();
   const series = getPieChartDataFromResponse(data, filterParam, labels);
   const options = {
     labels,

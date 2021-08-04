@@ -4,15 +4,10 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
+import { useFindingsData } from "../Findings/data/Context";
 
-const FindingsCheckBoxes = ({
-  filterParam,
-  options,
-  colors,
-  series,
-  filterOptions,
-  setFilterOptions,
-}) => {
+const FindingsCheckBoxes = ({ filterParam, options, colors, series }) => {
+  const { filterOptions, setFilterOptions } = useFindingsData();
   const [state, setState] = useState(filterOptions[filterParam]);
 
   const handleChange = (event) => {

@@ -17,7 +17,7 @@ export const FindingsDataContextProvider = ({ children }) => {
     return filterOptions[filterParam][item[filterParam]];
   };
 
-  const fitlerData = (data = mainData, filterOtopns = filterOptions) => {
+  const fitlerData = () => {
     return mainData.filter((item) => {
       return (
         isValidResult("Stage Status Text", item) &&
