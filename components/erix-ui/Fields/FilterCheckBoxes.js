@@ -1,14 +1,17 @@
 import { useState } from "react";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Checkbox from "@material-ui/core/Checkbox";
-import { useFindingsData } from "../Findings/data/Context";
+import {
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  FormHelperText,
+  Checkbox,
+} from "@material-ui/core";
+import { useFindingsData } from "../../Findings/data/Context";
 
-const FindingsCheckBoxes = ({ filterParam, options, colors, series }) => {
+const FilterCheckBoxes = ({ filterParam, options, colors, series }) => {
   const { filterOptions, setFilterOptions } = useFindingsData();
   const [state, setState] = useState(filterOptions[filterParam]);
+  console.log({ filterOptions, filterParam, state });
 
   const handleChange = (event) => {
     setFilterOptions({
@@ -28,6 +31,7 @@ const FindingsCheckBoxes = ({ filterParam, options, colors, series }) => {
           return (
             <FormControlLabel
               key={index}
+              label={`${item} (${series[index]})`}
               control={
                 <Checkbox
                   checked={state[item]}
@@ -36,7 +40,6 @@ const FindingsCheckBoxes = ({ filterParam, options, colors, series }) => {
                   style={{ color: colors[index] }}
                 />
               }
-              label={`${item} (${series[index]})`}
             />
           );
         })}
@@ -46,4 +49,4 @@ const FindingsCheckBoxes = ({ filterParam, options, colors, series }) => {
   );
 };
 
-export default FindingsCheckBoxes;
+export default FilterCheckBoxes;

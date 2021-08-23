@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../themes/exmaple";
-import Layout from "../components/Layouts/website/component";
+import theme from "../components/erix-ui/themes/exmaple";
+import Layout from "../components/Layouts/component";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {

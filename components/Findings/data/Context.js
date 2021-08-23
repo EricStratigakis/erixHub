@@ -1,5 +1,5 @@
-import { useState, createContext, useContext } from "react";
-import findingsData from "./recordData.json";
+import { useState, useEffect, createContext, useContext } from "react";
+import findingsData from "./fakeFindingsData.json";
 import initialFilterOptions from "./initialFilterOptions.json";
 
 export const FindingsDataContext = createContext();
@@ -29,6 +29,9 @@ export const FindingsDataContextProvider = ({ children }) => {
   const runFilters = () => {
     setData(fitlerData(mainData, filterOptions));
   };
+
+  useEffect(runFilters, []);
+
   return (
     <FindingsDataContext.Provider
       value={{

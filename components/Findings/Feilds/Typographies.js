@@ -1,5 +1,6 @@
-import Typography from "@material-ui/core/Typography";
-import removeHTML from "../../utils/removeHTML";
+import { Typography } from "@material-ui/core";
+import removeHTML from "../../../utils/removeHTML";
+import toReadableDate from "../../../utils/toReadableDate";
 
 export const FindingTypeAndSubType = ({ findingType, findingSubType }) => {
   return (
@@ -28,5 +29,15 @@ export const ContactNameAndEmail = ({ name, email }) => {
   );
 };
 export const FindingAccordianHeaderText = ({ text }) => {
+  return <Typography>{removeHTML(text)}</Typography>;
+};
+export const FindingApprovalText = ({ date }) => {
+  return (
+    <Typography>
+      {date ? `Approved on ${toReadableDate(date)}` : "Awaiting Approval"}
+    </Typography>
+  );
+};
+export const FindingAccorionHeaderText = ({ text }) => {
   return <Typography>{removeHTML(text)}</Typography>;
 };

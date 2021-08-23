@@ -18,8 +18,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "themes/exmaple.js",
-    "themes/exmaple.js"
+    "components/erix-ui/themes/exmaple.js",
+    "components/erix-ui/themes/exmaple.js"
   ],
   "exclude": ["node_modules"]
 }

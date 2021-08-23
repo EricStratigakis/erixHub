@@ -1,4 +1,4 @@
-import ApplicationCardGrid from "../components/Layouts/Application/ApplicationCardGrid";
+import ApplicationCardGrid from "../components/Findings/Layouts/ApplicationCardGrid";
 import { FindingsDataContextProvider } from "../components/Findings/data/Context";
 
 const Findings = () => {
