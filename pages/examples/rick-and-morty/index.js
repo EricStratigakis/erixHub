@@ -1,7 +1,7 @@
 //https://www.youtube.com/watch?v=tE3WOGIJ1mI&ab_channel=JamesPerkins
 
-import charactersQueryGenerator from "../../apollo/examples/rick-and-morty/queries/characters";
-import rickAndMortyAPIClient from "../../apollo/examples/rick-and-morty/client";
+import charactersQueryGenerator from "../../../apollo/examples/rick-and-morty/queries/characters";
+import rickAndMortyAPIClient from "../../../apollo/examples/rick-and-morty/client";
 
 import { useState } from "react";
 
