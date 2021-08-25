@@ -40,7 +40,7 @@ const NavBarLinks = () => {
       <MyTextLink text="Findings" route="/findings" />
       <MyTextLink text="Dashboard" route="/dashboard" />
       <MyTextLink text="Products" route="/products" />
-      <MyTextLink text="test" route="/test" />
+      <MyTextLink text="test" route="/fdb-auth0" />
       <MyTextLink text="The Oracle" route="/theoracle" />
 
       {user ? (
